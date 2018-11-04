@@ -1,0 +1,12 @@
+spring:
+    datasource:
+        url: jdbc:mysql://localhost:3306/marriage?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT&useSSL=false
+        username: root
+        password: root
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        type: com.alibaba.druid.pool.DruidDataSource
+
+mybatis:
+    typeAliasesPackage: com.grayliu.marriage.db.dao
+    mapperLocations: classpath:mapper/*.xml
+

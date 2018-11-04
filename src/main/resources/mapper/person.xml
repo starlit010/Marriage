@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.grayliu.marriage.db.dao.PersonDao">
+
+
+    <resultMap id="BaseResultMap" type="com.grayliu.marriage.db.entity.Person">
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="num" property="num" jdbcType="INTEGER"/>
+        <result column="username" property="name" jdbcType="VARCHAR"/>
+        <result column="nick" property="nick" jdbcType="VARCHAR"/>
+        <result column="married" property="married" jdbcType="VARCHAR"/>
+        <result column="telephone" property="telephone" jdbcType="VARCHAR"/>
+        <result column="nation" property="nation" jdbcType="VARCHAR"/>
+        <result column="birthday" property="birthday" jdbcType="VARCHAR"/>
+        <result column="come" property="come" jdbcType="VARCHAR"/>
+        <result column="comeBJ" property="comeBJ" jdbcType="VARCHAR"/>
+        <result column="heigh" property="heigh" jdbcType="VARCHAR"/>
+        <result column="weight" property="weight" jdbcType="VARCHAR"/>
+        <result column="faith" property="faith" jdbcType="VARCHAR"/>
+        <result column="duty" property="duty" jdbcType="VARCHAR"/>
+        <result column="onlyChild" property="onlyChild" jdbcType="VARCHAR"/>
+        <result column="academia" property="academia" jdbcType="VARCHAR"/>
+        <result column="education" property="education" jdbcType="VARCHAR"/>
+        <result column="house" property="house" jdbcType="VARCHAR"/>
+        <result column="addr" property="addr" jdbcType="VARCHAR"/>
+        <result column="car" property="car" jdbcType="VARCHAR"/>
+        <result column="carBJ" property="carBJ" jdbcType="VARCHAR"/>
+        <result column="company" property="company" jdbcType="VARCHAR"/>
+        <result column="salary" property="salary" jdbcType="VARCHAR"/>
+        <result column="interest" property="interest" jdbcType="VARCHAR"/>
+        <result column="advantage" property="advantage" jdbcType="VARCHAR"/>
+        <result column="family" property="family" jdbcType="VARCHAR"/>
+        <result column="weixin" property="weixin" jdbcType="VARCHAR"/>
+        <result column="require" property="require" jdbcType="VARCHAR"/>
+    </resultMap>
+    <sql id="BaseColumnList" >
+        id,num,username,nick,married,telephone,nation,birthday,come,comeBJ,heigh,weight,faith,duty,onlyChid,
+        academia,education,house,addr,car,carBJ,company,salary,interest,advantage,family,weixin,require
+    </sql>
+
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+        select
+        <include refid="BaseColumnList" />
+        from user_t
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+    <select id="selectByNum" resultMap="BaseResultMap" parameterType="java.lang.String" >
+        select
+        <include refid="BaseColumnList" />
+        from user_t
+        where num = #{num,jdbcType=INTEGER}
+    </select>
+    <select id="query" resultMap="BaseResultMap" parameterType="java.lang.String" >
+        select
+        <include refid="BaseColumnList" />
+        from user_t
+        where 1=1 and num = #{num,jdbcType=VARCHAR}
+    </select>
+
+    <insert id="insert" parameterType="com.grayliu.marriage.db.entity.Person" >
+        insert into person (num,username,nick,married,telephone,nation,birthday,come,comeBJ,heigh,weight,faith,duty,onlyChid,
+        academia,education,house,addr,car,carBJ,company,salary,interest,advantage,family,weixin,require)
+        values (#{num,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{nick,jdbcType=VARCHAR},#{married,jdbcType=VARCHAR},#{telephone,jdbcType=VARCHAR},#{nation,jdbcType=VARCHAR},
+        #{birthday,jdbcType=VARCHAR},#{come,jdbcType=VARCHAR},#{comeBJ,jdbcType=VARCHAR},#{heigh,jdbcType=VARCHAR},#{weight,jdbcType=VARCHAR},#{faith,jdbcType=VARCHAR},#{duty,jdbcType=VARCHAR},
+        #{onlyChid,jdbcType=VARCHAR},#{academia,jdbcType=VARCHAR},#{education,jdbcType=VARCHAR},#{house,jdbcType=VARCHAR},#{addr,jdbcType=VARCHAR},#{car,jdbcType=VARCHAR},#{carBJ,jdbcType=VARCHAR},
+        #{company,jdbcType=VARCHAR},#{salary,jdbcType=VARCHAR},#{interest,jdbcType=VARCHAR},#{advantage,jdbcType=VARCHAR},#{family,jdbcType=VARCHAR},#{weixin,jdbcType=VARCHAR},#{require,jdbcType=VARCHAR})
+    </insert>
+
+</mapper>
